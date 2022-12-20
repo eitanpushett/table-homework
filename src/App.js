@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div classname="App">
       {data ? (
         <div>
           {data.map(item => (
