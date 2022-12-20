@@ -5,7 +5,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://cors-anywhere.herokuapp.com/http://jsonplaceholder.typicode.com/users');
+      const response = await fetch('https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/users');
       const data = await response.json();
       setData(data);
     }
