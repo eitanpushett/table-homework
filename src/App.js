@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('http://jsonplaceholder.typicode.com/users');
+      const data = await response.json();
+      setData(data);
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {data ? (
+        <div>
+          {data.map(item => (
+            <ol >
+             	Name: { item.name },
+            	Email: { item.email }
+             	</ol>
+          ))}
+        </div>
+      ) : (
+        'Loading...'
+      )}
     </div>
   );
 }
 
 export default App;
+
+
+// import React from "react";
+// import './App.css';
+
+
+// import { useState, useEffect } from 'react';
+
+// function App() {
+//   const [data, setData] = useState(null);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       const response = await fetch('http://jsonplaceholder.typicode.com/users');
+//       const data = await response.json();
+//       setData(data);
+//     }
+//     fetchData();
+//   }, []);
+
+
+
+// 		return (
+// 		<div className = "App">
+// 			<h1> Fetch data from an api in react </h1> {
+// 				data.map((item) => (
+// 				<ol key = { item.id } >
+// 					User_Name: { item.username },
+// 					Full_Name: { item.name },
+// 					User_Email: { item.email }
+// 					</ol>
+// 				))
+// 			}
+// 		</div>
+// 	);
+// }
+
+
+// export default App;
