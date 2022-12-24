@@ -267,7 +267,7 @@ function App() {
   }
 
     function AddItem(List){
-      setData(d => [...d,{name: user, email: email}])
+      setData([...data,{name: user, email: email}])
       console.log(data)
 
     }
