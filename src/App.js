@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from 'react';
 function App() {
+
+  
+//this is to pull the json file from online 
+  //const [data, setData] = useState(null)
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  //     const data = await response.json();
+  //     setData(data);
+  //   }
+  //   fetchData();
+  // }, []);
+
+  
+
+
+//this is if you want the data inside
+  
   const [data, setData] = useState([
     {
       "id": 1,
@@ -231,29 +249,25 @@ function App() {
         "bs": "target end-to-end models"
       }
     }
-  ]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  //     const data = await response.json();
-  //     setData(data);
-  //   }
-  //   fetchData();
-  // }, []);
+  ]);  
 
 
   const [user, setUser] = useState('')
+  const [email, setEmail] = useState('') 
 
 
 
 
-  function handleToDoChange(e){
+  function handleUserChange(e){
     setUser(e.target.value)
   }
 
+  function handleEmailChange(e){
+    setEmail(e.target.value)
+  }
+
     function AddItem(List){
-      setData(d => [...d,user])
+      setData(d => [...d,{name: user, email: email}])
       console.log(data)
 
     }
@@ -262,13 +276,16 @@ function App() {
   return (
     
     <div>
-      <input value={user} onChange = {handleToDoChange}/>
+      User:
+      <input value={user} onChange = {handleUserChange}/>
+      Email:
+      <input value={email} onChange = {handleEmailChange}/>
       <button onClick={AddItem}>Add to list</button>
       <h3>To Do List:</h3>
       {data ? (
         <div>
           {data.map(item => (
-            <ol >
+            <ol key={item.name} >
              	Name: { item.name },
             	Email: { item.email },
 
