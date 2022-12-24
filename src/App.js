@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 function App() {
 
-  
+
 //this is to pull the json file from online 
   //const [data, setData] = useState(null)
   // useEffect(() => {
@@ -281,7 +281,7 @@ function App() {
       Email:
       <input value={email} onChange = {handleEmailChange}/>
       <button onClick={AddItem}>Add to list</button>
-      <h3>To Do List:</h3>
+      <h3>User List:</h3>
       {data ? (
         <div>
           {data.map(item => (
